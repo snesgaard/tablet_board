@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="5" tilewidth="200" tileheight="200" nextobjectid="1">
+ <tileset firstgid="1" name="tileset" tilewidth="200" tileheight="200" tilecount="4" columns="2">
+  <image source="tileset.png" width="400" height="400"/>
+  <tile id="0">
+   <properties>
+    <property name="move" type="int" value="20"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="move" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="move" type="int" value="20"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="move" type="int" value="20"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="10" height="5">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+2,2,2,2,2,2,2,2,2,2,
+4,4,4,4,4,4,4,4,4,4,
+3,3,3,3,3,3,3,3,3,3
+</data>
+ </layer>
+</map>
