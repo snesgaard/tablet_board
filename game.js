@@ -1,15 +1,13 @@
-//<<<<<<< HEAD
 var gameRatio = window.innerWidth/window.innerHeight;
-// var game = new Phaser.Game(Math.ceil(640*gameRatio), 640, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update });
 var game = new Phaser.Game( window.innerWidth, window.innerHeight, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update });
 var trump_image;
 var firstRunLandscape;
 
 function preload() {
     game.load.tilemap('map', 'resource/tiles/test.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('tiles', 'resource/tiles/tileset.png');	
-	game.load.image('trump', 'resource/image/trump.png');
-	
+    game.load.image('tiles', 'resource/tiles/tileset.png');
+	  game.load.image('trump', 'resource/image/trump.png');
+
 	// Seb's broken build
 	firstRunLandscape = game.scale.isGameLandscape;
 
@@ -45,22 +43,17 @@ function create() {
 
     terrain.resizeWorld();
 	terrain.debugSettings.forceFullRedraw = true;
-	// ..... // ....
-	
-	
+
 	trump_image = game.add.sprite(0,0,'trump');
 	trump_image.inputEnabled = true;
-	
+
 	game.physics.enable(trump_image, Phaser.Physics.ARCADE);
 	game.input.addPointer();
-		
+
 	game.input.onDown.add(function() {
 		console.log("fabo");
 		game.physics.arcade.moveToPointer(trump_image, 400);
 		});
-	
-	// console.log(map.getTile(0,0, "Terrain"));
-	// console.log(map.getTile(0,0, "Entities"));
 	console.log(terrain);
 	console.log(entities);
 }
@@ -70,9 +63,6 @@ function update() {
 		{
 			trump_image.body.velocity.setTo(0,0);
 		}
-	
-	// console.log(trump_image.position.x);
-	// console.log(trump_image.position.y);
 }
 function handleIncorrect(){
    	if(!game.device.desktop){
@@ -89,7 +79,6 @@ function handleCorrect(){
 			game.width = Math.ceil(640*gameRatio);
 			game.height = 640;
 			game.renderer.resize(game.width,game.height);
-			//game.state.start("Play");
 		}
 		document.getElementById("turn").style.display="none";
 	}
