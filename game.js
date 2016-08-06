@@ -6,9 +6,9 @@ var trump_image;
 var firstRunLandscape;
 
 function preload() {
-    game.load.tilemap('map', 'tiles/test.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('tiles', 'tiles/tileset.png');	
-	game.load.image('trump', 'assets/trump.png');
+    game.load.tilemap('map', 'resource/tiles/test.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('tiles', 'resource/tiles/tileset.png');	
+	game.load.image('trump', 'resource/image/trump.png');
 	
 	// Seb's broken build
 	firstRunLandscape = game.scale.isGameLandscape;
