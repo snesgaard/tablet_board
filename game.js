@@ -23,18 +23,30 @@ function preload() {
 }
 
 var map;
-var layer;
+var terrain;
+var entities;
 
 function create() {
-    map = game.add.tilemap('map');
+    
+	// Init tilemaps
+	map = game.add.tilemap('map');
 
     map.addTilesetImage('tileset', 'tiles');
 
-    layer = map.createLayer('Tile Layer 1');
+    terrain = map.createLayer('Terrain');
+	entities = map.createLayer('Entities');
+	entities.visible = false;
+	
+	for (var i = 0; i < map.width; i++) {
+		for (var j = 0; j < map.height; j++) {
+			map.putTile(-1, i, j, "Entities");
+		}
+	}
 
-    layer.resizeWorld();
-	layer.debugSettings.forceFullRedraw = true;
-	console.log(map.tilesets[0].tileProperties[0].move);
+    terrain.resizeWorld();
+	terrain.debugSettings.forceFullRedraw = true;
+	// ..... // ....
+	
 	
 	trump_image = game.add.sprite(0,0,'trump');
 	trump_image.inputEnabled = true;
@@ -46,6 +58,11 @@ function create() {
 		console.log("fabo");
 		game.physics.arcade.moveToPointer(trump_image, 400);
 		});
+	
+	// console.log(map.getTile(0,0, "Terrain"));
+	// console.log(map.getTile(0,0, "Entities"));
+	console.log(terrain);
+	console.log(entities);
 }
 
 function update() {
@@ -54,8 +71,8 @@ function update() {
 			trump_image.body.velocity.setTo(0,0);
 		}
 	
-	console.log(trump_image.position.x);
-	console.log(trump_image.position.y);
+	// console.log(trump_image.position.x);
+	// console.log(trump_image.position.y);
 }
 function handleIncorrect(){
    	if(!game.device.desktop){
@@ -77,60 +94,3 @@ function handleCorrect(){
 		document.getElementById("turn").style.display="none";
 	}
 }
-// =======
-// window.onload = function() {
-	// var gameRatio = window.innerWidth/window.innerHeight;
-	// var game = new Phaser.Game(Math.ceil(640*gameRatio), 640, Phaser.CANVAS);
-	// var firstRunLandscape;
-	// var play = function(game){}
-
-
-
-	// play.prototype = {
-
-		// preload:function(){
-
-			// firstRunLandscape = game.scale.isGameLandscape;
-
-			// game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-
-			// game.scale.forceOrientation(false, true);
-
-			// game.scale.enterIncorrectOrientation.add(handleIncorrect);
-
-      // game.scale.leaveIncorrectOrientation.add(handleCorrect);
-
-		// },
-
-		// create:function(){
-
-		// }
-
-	// }
-
-
-
-	// function handleIncorrect(){
-     	// if(!game.device.desktop){
-     		// document.getElementById("turn").style.display="block";
-     	// }
-	// }
-
-
-
-	// function handleCorrect(){
-		// if(!game.device.desktop){
-			// if(firstRunLandscape){
-				// gameRatio = window.innerWidth/window.innerHeight;
-				// game.width = Math.ceil(640*gameRatio);
-				// game.height = 640;
-				// game.renderer.resize(game.width,game.height);
-				// game.state.start("Play");
-			// }
-			// document.getElementById("turn").style.display="none";
-		// }
-	// }
-
-	// game.state.add("Play",play);
-	// game.state.start("Play");
-// }
